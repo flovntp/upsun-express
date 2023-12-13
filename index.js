@@ -4,11 +4,11 @@ const mysql = require("mysql2/promise");
 const port = (process.env.PORT || '3000');
 function openConnection() {
   return mysql.createConnection({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    user: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DATABASE
   });
 }
 function createTable(connection) {
