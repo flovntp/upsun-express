@@ -1,0 +1,16 @@
+version: '3.1'
+volumes:
+  data:
+services:
+  db:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: express
+      MARIADB_PASSWORD: express
+      MARIADB_USER: user
+      MARIADB_DATABASE: express
+    volumes:
+      - data:/var/lib/mysql
+    ports:
+      - "3306:3306"
