@@ -3,11 +3,17 @@ const app = express()
 const mysql = require("mysql2/promise");
 const port = (process.env.PORT || '3000');
 function openConnection() {
+
+  let database_password = 'express'
+  if (process.env.DATABASE_PASSWORD !== undefined) {
+    database_password = process.env.DATABASE_PASSWORD
+  }
+
   return mysql.createConnection({
     host: (process.env.DATABASE_HOST || '127.0.0.1'),
     port: (process.env.DATABASE_PORT || '3306'),
     user: (process.env.DATABASE_USERNAME || 'user'),
-    password: (process.env.DATABASE_PASSWORD),
+    password: database_password,
     database: (process.env.DATABASE_PATH || 'express')
   });
 }
@@ -24,7 +30,7 @@ function createTable(connection) {
 }
 function insertData(connection) {
   return connection.execute(
-    "INSERT INTO upsuninfo (username, departname, created) VALUES ('upsun', 'Deploy Friday', '2023-09-29')"
+    "INSERT INTO upsuninfo (username, departname, created) VALUES ('upsun', 'Deploy Friday', '2023-12-18')"
   );
 }
 function readData(connection) {
